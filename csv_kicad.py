@@ -1,5 +1,5 @@
 import os
-import csv
+import pandas as pd
 
 output_dir = './output/'
 csv_file = 'pinout.csv'
@@ -33,16 +33,42 @@ param = """      (pin input line (at 0 {pos:.2f} 0) (length 2.54)
       )"""
 
 
+df = pd.read_csv(output_dir + csv_file, header=None)
+sorted = df.sort_values(1)
+
 with open(output_dir + sym_file, 'w') as symfile:
-
     symfile.write(start)
-
     i = 0
-
-    with open(output_dir + csv_file, mode ='r') as csvfile:
-        csvReader = csv.reader(csvfile)
-        for lines in csvReader:
-            symfile.write(param.format(pos=i, name=lines[0], number=lines[1]))
-            i = i - 2.54
-    
+    for index, row in sorted.iterrows():
+        symfile.write(param.format(pos=i, name=row[0], number=row[1]))
+        i = i - 2.54
     symfile.write(end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# with open(output_dir + sym_file, 'w') as symfile:
+
+#     symfile.write(start)
+
+#     i = 0
+
+#     with open(output_dir + csv_file, mode ='r') as csvfile:
+#         csvReader = csv.reader(csvfile)
+#         for lines in csvReader:
+#             symfile.write(param.format(pos=i, name=lines[0], number=lines[1]))
+#             i = i - 2.54
+    
+#     symfile.write(end)
