@@ -3,36 +3,37 @@
 Quite a lot of mistakes while making symmbols are made from wrong pin definition...
 ( ask how i know )
 
-So I trid to create a really crude ocr in order create kicad symbols.
+So I tried to create a really crude ocr in order create kicad symbols.
+But it was mostly not working, current ocr relies heavily on ditionnaries,
+and pin names are not quite in them...
+
+So the current version reads the selectable text from the pdf
+and make the symbol from it, easy ! ( and accurate this time)
+( the old ocr version is still there if you want to try it )
 
 ## Example
+
 - get a datasheet ( ex https://www.ti.com/lit/ds/symlink/cc1352r.pdf )
-- Create a csv with the pinout
-  - find the pinout table
-  - screenshot the text you want, make it the highest quality with anything but the text
-  - save the screenshots in the input file
-  - run ocr_csv.py
-- Clean the csv (./output/pinout.csv)
-  - open the csv with libreOffice
-  - check the data
-  - remove empty rows
-  - save the csv file
-- Create the symbol
-  - run csv_kicad
-- Import the symbol in kicad
-  - in the symbol editor
-  - go to the lib you want
-  - file > import symbol > the symbol you juste created
+- launch main.py
+
+- Create the data
+  - select the file
+  - go to the page you want and select the table ( name / pin )
+  - press on get table
+  - select another table if necessary
+- Edit/Check the data
+  - gedit is opened as default
+  - edit the data if you need to
+  - if for some reason there's a letter/char in the pin numbers column, it will ne be ordered properly on the symbol
 - Enjoy !
-  - ( in theory this method should be faster and less error prone than a manual one, we'll see )
-
-
+  - Import the symbol in kicad
 
 ## install on Ubuntu
 
-sudo apt-get update && sudo apt-get install tesseract-ocr
-sudo -m python3 pip install opencv-python pytesseract numpy pandas
+sudo -m python3 pip install opencv-python pymupdf numpy pandas
 
 ## license
 
-None yet
+Yep
+
+## Special thanks to the devs at pymupdf for the lib and exemple !
