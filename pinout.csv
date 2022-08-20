@@ -1,0 +1,96 @@
+"EFR32MG12 Gecko Multi-Protocol"
+"Wireless SoC Family Data Sheet"
+"The Gecko multi-protocol family of SoCs is part of the Wireless"
+"Gecko portfolio. Gecko SoCs are ideal for enabling energy-friendly KEY FEATURES"
+"multi-protocol, multi-band networking for IoT devices."
+"• 32-bit ARM® Cortex®-M4 core with 40"
+"MHz maximum operating frequency"
+"The single-die solution provides industry-leading energy efficiency, ultra-fast wakeup"
+"• Up to 1 MB of flash and 256 kB of RAM"
+"times, a scalable power amplifier, and no-compromise MCU features."
+"• Pin-compatible across EFR32MG families"
+"(exceptions apply for 5V-tolerant pins)"
+"Gecko applications include:"
+"• 12-channel Peripheral Reflex System,"
+"• IoT Multi-Protocol Devices"
+"Low-Energy Sensor Interface & Multi-"
+"channel Capacitive Sense Interface"
+"• Connected Home"
+"• Autonomous Hardware Crypto Accelerator"
+"• Lighting"
+"and True Random Number Generator"
+"• Health and Wellness"
+"• Integrated PA with up to 19 dBm (2.4"
+"• Metering"
+"GHz) or 20 dBm (Sub-GHz) TX power"
+"• Home and Building Automation and Security"
+"• Integrated balun for 2.4 GHz"
+"• Robust peripheral set and up to 65 GPIO"
+"Core / Memory Energy Management Other Clock Management"
+"High Frequency"
+"Voltage CRYPTO High Frequency"
+"Voltage Monitor Crystal"
+"Regulator RC Oscillator"
+Oscillator
+CortexTM
+"ARM M4 processor Memory"
+CRC
+"with DSP extensions and FPU Protection Unit"
+"Auxiliary High"
+"DC-DC Low Frequency"
+"Power-On Reset Frequency RC"
+"Converter RC Oscillator"
+"True Random"
+Oscillator
+"Number Generator"
+"Low Frequency Ultra Low"
+"Brown-Out Flash Program Debug Interface LDMA"
+"Crystal Frequency RC RAM Memory"
+SMU
+"Detector Memory with ETM Controller"
+"Oscillator Oscillator"
+"32-bit bus"
+"Peripheral Reflex System"
+"Timers and Triggers Serial I/O Ports Analog I/F Radio Transceiver"
+Interfaces
+"Sub GHz"
+DEMOD
+"ADC I"
+"External BUFC"
+FRC
+"Timer/Counter Protocol Timer USART LNA"
+Interrupts
+"RF Frontend"
+Analog
+IFADC
+PGA
+Comparator
+PA
+"Low Energy Low Energy General"
+"Watchdog Timer Q"
+"Timer UARTTM Purpose I/O"
+IDAC
+"To Sub GHz"
+"AGC receive I/Q"
+"Real Time"
+"mixers and PA"
+"Capacitive Sense"
+"CRC RAC"
+"Counter and Pulse Counter I2C Pin Reset"
+"2.4 GHz"
+Calendar
+I
+Frequency
+LNA
+"VDAC MOD"
+Synthesizer
+"Low Energy RF Frontend BALUN"
+"Cryotimer Pin Wakeup"
+"Sensor Interface"
+Op-Amp
+PA
+"To 2.4 GHz receive To Sub GHz"
+Q
+"I/Q mixers and PA and 2.4 GHz PA"
+"Lowest power mode with peripheral operational:"
+"EM3—Stop EM2—Deep Sleep EM1—Sleep EM4—Hibernate EM4—Shutoff EM0—Active"

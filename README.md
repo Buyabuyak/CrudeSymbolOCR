@@ -30,7 +30,8 @@ and make the symbol from it, easy ! ( and accurate this time)
 
 ## install on Ubuntu
 
-sudo -m python3 pip install opencv-python pymupdf numpy pandas
+sudo  python3 -m pip install opencv-python pymupdf numpy pandas
+git clone https://github.com/Buyabuyak/CrudeSymbolOCR
 
 ## license
 

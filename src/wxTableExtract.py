@@ -69,7 +69,7 @@ bmp_from_buffer = wx.Bitmap.FromBuffer
 # some abbreviations to get rid of those long pesky names ...
 defPos = wx.DefaultPosition
 defSiz = wx.DefaultSize
-khaki  = wx.Colour(240, 230, 140)
+dark  = wx.Colour(0x00, 0x0d, 0x1a)
 #==============================================================================
 # Define our dialog as a subclass of wx.Dialo        print(f'{i:.2f}'.format(i))g.
 # Only special thing is, that we are being invoked with a filename ...
@@ -86,7 +86,7 @@ class PDFdisplay (wx.Dialog):
         # display an icon top left of dialog, append filename to title
         #======================================================================
         if show_icon: self.SetIcon(ico_pdf.img.GetIcon())  # set a screen icon
-        self.SetBackgroundColour(khaki)
+        self.SetBackgroundColour(dark)
         self.SetTitle(self.Title + filename)
         self.set_rectangle = False
 
@@ -565,7 +565,8 @@ class PDFdisplay (wx.Dialog):
         dc = wx.ClientDC(self.PDFimage)     # make a device control out of img
         dc.SetPen(wx.Pen(c))
         # only draw inside the rectangle
-        dc.DrawLine(x, self.rect_y, x, self.rect_y + self.rect_h)
+        pdfx, pdfy = self.PDFimage.GetPosition()
+        dc.DrawLine(x + pdfx, self.rect_y + pdfy, x + pdfx, self.rect_y + self.rect_h + pdfy)
         self.adding_column = False
 
     def DrawRect(self, x, y, w, h):
@@ -574,7 +575,8 @@ class PDFdisplay (wx.Dialog):
         dc.SetPen(wx.Pen("RED"))
         dc.SetBrush(wx.Brush("RED", style=wx.BRUSHSTYLE_TRANSPARENT))
         self.redraw_bitmap()
-        dc.DrawRectangle(x, y, w, h)
+        pdfx, pdfy = self.PDFimage.GetPosition()
+        dc.DrawRectangle(x + pdfx, y + pdfy, w, h)
 
     def GetMatrix(self, evt):
         # parse table contained in rectangle
@@ -595,21 +597,22 @@ class PDFdisplay (wx.Dialog):
             t = "\nContents of (%s x %s)-table at [%s,%s] on page %s"
             print(t % (r, c, x0, y0, pg + 1))
 
-
             for l in self.parsed_table:
                 print(l)
                 csvwriter.writerow(l)
+            csvfile.flush()
         else:
             print("No text found in rectangle")
 
     def redraw_bitmap(self):
+        pdfx, pdfy = self.PDFimage.GetPosition()
         w = self.bitmap.Size[0]
         h = self.bitmap.Size[1]
         x = y = 0
         rect = wx.Rect(x, y, w, h)
         bm = self.bitmap.GetSubBitmap(rect)
         dc = wx.ClientDC(self.PDFimage)     # make a device control out of img
-        dc.DrawBitmap(bm, x, y)             # refresh bitmap before draw
+        dc.DrawBitmap(bm, pdfx, pdfy)             # refresh bitmap before draw
         return
 
     def ActivateRect(self, evt):
@@ -692,7 +695,7 @@ class PDFdisplay (wx.Dialog):
 # Wildcard: offer all supported filetypes
 
 with open("./pinout.csv", 'w') as csvfile:
-    csvwriter = csv.writer(csvfile)
+    csvwriter = csv.writer(csvfile, delimiter=' ')
 
     wild = "supported files|*.pdf;*.xps;*.oxps;*.epub;*.cbz"
 
