@@ -230,8 +230,8 @@ class PDFdisplay (wx.Dialog):
         szr40 = wx.BoxSizer(wx.VERTICAL)         # rect & col controls
 
         # szr20: navigation controls
-        szr20.Add(self.BtnNext, 0, wx.ALL, 5)
         szr20.Add(self.BtnPrev, 0, wx.ALL, 5)
+        szr20.Add(self.BtnNext, 0, wx.ALL, 5)
         szr20.Add(self.TextToPage, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5)
         szr20.Add(self.statPageMax, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5)
         szr20.Add(self.paperform, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5)
@@ -696,7 +696,7 @@ class PDFdisplay (wx.Dialog):
 
 with open("./pinout.csv", 'w') as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=' ')
-
+    csvwriter.writerow(["Name", "Number", "ElectricalType"])
     wild = "supported files|*.pdf;*.xps;*.oxps;*.epub;*.cbz"
 
     #==============================================================================
